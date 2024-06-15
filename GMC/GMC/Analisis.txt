@@ -1,0 +1,39 @@
+Funciones:
+	Gestion de citas: 
+		- Agendar una cita
+		- Mostrar una cita
+		- Cancelar cita
+		- Reprogramar una cita
+		- Listar citas: 
+			- en espera
+			- atendidas
+			- canceladas
+		- Atender cita
+	Gestion de médicos
+		- Agregar médico
+		- Modificar médico
+		- Eliminar médico
+		- Listar medicos: especialidad
+		- Calcular ganancias de un médico
+		 
+Listas:
+	Citas:
+	- Codigo
+	- Estado
+	- Fecha
+	- Hora
+
+Datos:
+	Paciente:
+	- Nombre
+	- Apellido
+	- Cedula
+	 
+	Medico:
+	- Codigo
+	- Nombre
+	- Apellido
+	- Especialidad
+	- Costo
+	
+	

@@ -1,0 +1,8 @@
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\bin\Debug\GMC.exe.config
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\bin\Debug\GMC.exe
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\bin\Debug\GMC.pdb
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.Properties.Resources.resources
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.csproj.GenerateResource.Cache
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.exe
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.pdb
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.csprojResolveAssemblyReference.cache
