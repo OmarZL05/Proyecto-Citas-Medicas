@@ -38,7 +38,134 @@ namespace GMC
             cita7.sig = cita8;
             cita8.sig = cita9;
 
-            
+        }
+
+        public static void agendarCita() {}
+        public static void mostrarCita() {}
+        public static void cancelarCita() {}
+        public static void reprogramarCita() {}
+        public static void atenderCita() {}
+        public static void listarCitasEnEspera() {}
+        public static void listarCitasAtendidas() {}
+        public static void listarCitasCanceladas() {}
+
+        /*- Agregar médico
+        - Modificar médico
+        - Eliminar médico
+        - Listar medicos: especialidad
+        - Calcular ganancias de un médico
+        */
+        public static void agregarMedico(string codigo, string nombre, string apellido, string especialidad, int costo)
+        {
+            Medicos nvo_Nodo = new Medicos(codigo, nombre, apellido, especialidad, costo);
+            Medicos actual = ListaMedicos;
+            if (actual == null)
+            {
+                ListaMedicos = nvo_Nodo;
+            }
+            else
+            {
+                while (actual.sig != null)
+                {
+                    actual = actual.sig;
+                }
+                actual.sig = nvo_Nodo;
+            }
+        }
+
+        public static void modificarMedico(string codigo) {}
+
+
+        public static void eliminarMedico(string codigo)
+        {
+            Medicos actual = ListaMedicos;
+            if (actual.sig == null && actual.codigo == codigo)
+            {
+                ListaMedicos = null;
+            }
+            else
+            {
+                while (actual.sig != null)
+                {
+                    if (actual.sig.codigo == codigo)
+                    {
+                        actual.sig = actual.sig.sig;
+                    }
+                    actual = actual.sig;
+                }
+            }
+        }
+
+        public static void mostrarMedico(string codigo)
+        {
+            Medicos medicos = Listas.ListaMedicos;
+            bool stop = false;
+            while (medicos != null && !stop)
+            {
+                if (medicos.codigo == codigo)
+                {
+                    Console.WriteLine("Nombre: " + medicos.nombre);
+                    Console.WriteLine("Apellido: " + medicos.apellido);
+                    Console.WriteLine("Especialiadad: " + medicos.especialidad);
+                    Console.WriteLine("Costo: " + medicos.costo);
+                    stop = true;
+                }
+                medicos = medicos.sig;
+
+            }
+            if (!stop)
+            {
+                Console.WriteLine("Medico no disponible");
+            }
+
+        }
+
+        public static void listarMedicosPorEspecialidad(string especialidad) 
+        {
+            Medicos actual = ListaMedicos;
+            bool medicoEncontrado = false;
+            while (actual != null)
+            {
+                if (actual.especialidad == especialidad)
+                {
+                    Console.WriteLine("Nombre: " + actual.nombre);
+                    Console.WriteLine("Apellido: " + actual.apellido);
+                    Console.WriteLine("Especialiadad: " + actual.especialidad);
+                    Console.WriteLine("Costo: " + actual.costo);
+                    medicoEncontrado = true;
+                }
+            }
+
+            if (!medicoEncontrado)
+            {
+                Console.WriteLine("No se ha encontrado ningun medico con la especialidad: "+especialidad);
+            }
+
+        }
+        public static int calcularGanancias(string codigo) 
+        {
+            Citas citas = ListaCitas;
+            Medicos medicos = ListaMedicos;
+            int ganancias, cantidadAtendidos = 0, costo = 0;
+            while (citas != null)
+            {
+                if (citas.medico == codigo && citas.estado == "Atendida")
+                {
+                    cantidadAtendidos++;
+                }
+                citas = citas.sig;
+            }
+
+            while (medicos != null)
+            {
+                if (medicos.codigo == codigo)
+                {
+                    costo = medicos.costo;
+                }
+            }
+
+            ganancias = cantidadAtendidos * costo;
+            return ganancias;
         }
 
     }

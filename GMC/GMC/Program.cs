@@ -18,6 +18,8 @@ namespace GMC
 
             Listas.cargar();
             agregarCita("17/07/2024", "10:00", "lmi603", new Paciente(31690875, "Omar", "Zabala"));
+            Listas.eliminarMedico("lmi603");
+            Listas.agregarMedico("lmi603", "Hector", "Lavoe", "Cantante", 100);
             imprimirCitas(Listas.ListaCitas);
             
             Console.ReadLine();
@@ -60,6 +62,10 @@ namespace GMC
                 }
                 medicos = medicos.sig;
 
+            }
+            if (!stop)
+            {
+                Console.WriteLine("Medico no disponible");
             }
 
         }
