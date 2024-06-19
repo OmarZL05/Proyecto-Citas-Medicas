@@ -1,20 +1,24 @@
 ﻿Funciones:
 	Gestion de citas: 
-		- Agendar una cita
-		- Mostrar una cita
-		- Cancelar cita
-		- Reprogramar una cita
-		- Listar citas: 
+		- Agendar una cita: "Se piden los datos del paciente y la fecha"
+		- Mostrar una cita: "Se pide el codigo de la cita"
+		- Cancelar cita: "Se pide el codigo de la cita"
+		- Reprogramar una cita: "Se pide el codigo de la cita y la nueva fecha"
+		- Listar citas: "Se pide una fecha"
 			- en espera
-			- atendidas
-			- canceladas
+			- atendidas 
+			- canceladas 
 		- Atender cita
 	Gestion de médicos
 		- Agregar médico
 		- Modificar médico
 		- Eliminar médico
-		- Listar medicos: especialidad
-		- Calcular ganancias de un médico
+		- Listar medicos: 
+			- todos
+			- por especialidad
+		- Calcular ganancias de un médico: 
+			- total
+			- por periodo de tiempo
 		 
 Listas:
 	Citas:
