@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GMC
 {
@@ -11,26 +12,33 @@ namespace GMC
         [STAThread]
         static void Main()
         {
-            /*Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
-             * */
+            // Esto es en caso de hacerlo con interfaz grafica.
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Form1());
+             
+            Nodos.inicializarListas();
 
-            Listas.cargar();
-            agregarCita("17/07/2024", "10:00", "lmi603", new Paciente(31690875, "Omar", "Zabala"));
-            Listas.eliminarMedico("lmi603");
-            Listas.agregarMedico("lmi603", "Hector", "Lavoe", "Cantante", 100);
-            imprimirCitas(Listas.ListaCitas);
+            // prueba de la funcion agendarCita
+            GestorCitas.agendarCita("17/07/2024", "10:00", new Paciente(31690875, "Omar", "Zabala"), "lmi603");
             
+            // prueba de la funcion eliminar medico
+            GestorMedicos.eliminarMedico("lmi603");
+
+            // Prueba de la funcion agregarMedico
+            GestorMedicos.agregarMedico("lmi603", "Hector", "Lavoe", "Cantante", 100);
+            
+            imprimirCitas(Nodos.ListaCitas);
+
             Console.ReadLine();
         }
 
+        // [Funciones de prueba]
         static void imprimirCitas(Citas citas)
         {
             Citas actual = citas;
             while (actual != null)
             {
-                Console.WriteLine("[");
                 Console.WriteLine("Cita: "+actual.codigo);
                 Console.WriteLine("Estado: " + actual.estado);
                 Console.WriteLine("C.I: "+actual.paciente.cedula);
@@ -40,7 +48,7 @@ namespace GMC
                 imprimirMedico(actual.medico);
                 Console.WriteLine("Fecha: "+actual.fecha);
                 Console.WriteLine("Hora: "+actual.hora);
-                Console.WriteLine("]\n");
+                Console.WriteLine("");
 
                 actual = actual.sig;
             }
@@ -48,7 +56,7 @@ namespace GMC
 
         static void imprimirMedico(string codigo)
         {
-            Medicos medicos = Listas.ListaMedicos;
+            Medicos medicos = Nodos.ListaMedicos;
             bool stop = false;
             while (medicos != null && !stop )
             {
@@ -69,20 +77,6 @@ namespace GMC
             }
 
         }
-
-        static void agregarCita(string fecha, string hora, string medico, Paciente paciente)
-        {
-            Citas actual = Listas.ListaCitas;
-            Citas nvo_Nodo = new Citas(Listas.cantidadCitas++, "En Espera", fecha, hora, paciente, medico);
-            while (actual.sig != null)
-            {
-                actual = actual.sig;
-            }
-
-            actual.sig = nvo_Nodo;
-
-        }
-
     }
 
     

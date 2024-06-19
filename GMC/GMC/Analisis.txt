@@ -1,4 +1,4 @@
-Funciones:
+﻿Funciones:
 	Gestion de citas: 
 		- Agendar una cita
 		- Mostrar una cita
@@ -22,18 +22,21 @@ Listas:
 	- Estado
 	- Fecha
 	- Hora
+	- Paciente
 
+	Medicos:
+	- Codigo
+	- Nombre
+	- Apellido
+	- Especialidad
+	- Costo
+	
 Datos:
 	Paciente:
 	- Nombre
 	- Apellido
 	- Cedula
 	 
-	Medico:
-	- Codigo
-	- Nombre
-	- Apellido
-	- Especialidad
-	- Costo
+	
 	
 	
