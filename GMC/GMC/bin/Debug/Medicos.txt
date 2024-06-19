@@ -1,5 +1,0 @@
-csi504 Celena Sánchez Internista 50
-lmi603 Luisa Marín Internista 60
-mmn302 María Marcano Nefrologia 30
-jgc501 José Gómez Cardiologia 50
-lmi603 Hector Lavoe Cantante 100
