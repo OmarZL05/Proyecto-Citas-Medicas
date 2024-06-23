@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GMC
 {
-    public partial class Form1 : Form
+    public partial class MenuCitas : Form
     {
-        public Form1()
+        public MenuCitas()
         {
             InitializeComponent();
         }

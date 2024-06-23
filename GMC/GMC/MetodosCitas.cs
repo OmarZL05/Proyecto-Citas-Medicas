@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GMC
 {
-    public static class GestorCitas
+    public static class MetodosCitas
     {
         public static void agendarCita(string fecha, string hora, Paciente paciente, string codigoMedico)
         {
