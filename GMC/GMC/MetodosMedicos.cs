@@ -50,20 +50,14 @@ namespace GMC
             }
         }
 
-        public static bool eliminarMedico(string codigo)
+        public static void eliminarMedico(string codigo)
         {
             Medicos actual = Nodos.ListaMedicos;
 
-            if (actual == null)
+            if (actual == null || (actual.sig == null && actual.codigo == codigo))
             {
                 Nodos.ListaMedicos = null;
-                return false;
-            }
-
-            if (actual.sig == null && actual.codigo == codigo)
-            {
-                Nodos.ListaMedicos = null;
-                return true;
+                return;
             }
             
             while (actual.sig != null)
@@ -71,12 +65,11 @@ namespace GMC
                 if (actual.sig.codigo == codigo)
                 {
                     actual.sig = actual.sig.sig;
-                    return true;
+                    return;
                 }
                 actual = actual.sig;
             }
 
-            return true;
         }
 
 

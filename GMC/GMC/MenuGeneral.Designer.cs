@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuGeneral));
             this.btnCitas = new System.Windows.Forms.Button();
             this.btnMedicos = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCitas
             // 
-            this.btnCitas.Location = new System.Drawing.Point(28, 187);
+            this.btnCitas.Location = new System.Drawing.Point(28, 227);
             this.btnCitas.Name = "btnCitas";
             this.btnCitas.Size = new System.Drawing.Size(104, 23);
             this.btnCitas.TabIndex = 0;
@@ -45,7 +47,7 @@
             // 
             // btnMedicos
             // 
-            this.btnMedicos.Location = new System.Drawing.Point(152, 187);
+            this.btnMedicos.Location = new System.Drawing.Point(152, 227);
             this.btnMedicos.Name = "btnMedicos";
             this.btnMedicos.Size = new System.Drawing.Size(104, 23);
             this.btnMedicos.TabIndex = 1;
@@ -53,26 +55,29 @@
             this.btnMedicos.UseVisualStyleBackColor = true;
             this.btnMedicos.Click += new System.EventHandler(this.btnMedicos_Click);
             // 
-            // button1
+            // pictureBox1
             // 
-            this.button1.Location = new System.Drawing.Point(152, 216);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(120, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "GestionarMedicosV2";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.pictureBox1.BackgroundImage = global::GMC.Properties.Resources.icon_500x500;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(28, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(228, 221);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // MenuGeneral
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnMedicos);
             this.Controls.Add(this.btnCitas);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MenuGeneral";
             this.Text = "GMC";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -81,6 +86,6 @@
 
         private System.Windows.Forms.Button btnCitas;
         private System.Windows.Forms.Button btnMedicos;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -25,7 +25,7 @@ namespace GMC
 
         private void MenuMedicos_Load(object sender, EventArgs e)
         {
-            añadir_BtnAgregar.Enabled = false;
+            verificar();
             elim_btnBuscar.Enabled = false;
             elim_btnEliminar.Enabled = false;
             mod_btnBuscar.Enabled = false;
@@ -48,8 +48,38 @@ namespace GMC
         private void verificar()
         {
             añadir_BtnAgregar.Enabled = false;
-            if (añadir_Nombre.TextLength > 0 && añadir_Apellido.TextLength > 0 && añadir_Especialidad.TextLength > 0 && añadir_Codigo.TextLength == 6)
+
+            if (añadir_Costo.Value == 0)
             {
+                errorProvider1.SetError(añadir_Costo, "¿Piensas regalar tus servicios?");
+            } else {
+                errorProvider1.SetError(añadir_Costo, "");
+            }
+
+            if (añadir_Nombre.TextLength == 0)
+            {
+                errorProvider1.SetError(añadir_Nombre, "Faltan terminos");
+            } else { 
+                errorProvider1.SetError(añadir_Nombre, ""); 
+            }
+
+            if (añadir_Apellido.TextLength == 0) 
+            {
+                errorProvider1.SetError(añadir_Apellido, "Faltan terminos");
+            } else { 
+                errorProvider1.SetError(añadir_Apellido, ""); 
+            }
+
+            if (añadir_Especialidad.TextLength == 0)
+            {
+                errorProvider1.SetError(añadir_Especialidad, "Faltan terminos");
+            } else { 
+                errorProvider1.SetError(añadir_Especialidad, "");
+            }
+
+            if (añadir_Codigo.TextLength == 6)
+            {
+                errorProvider1.SetError(añadir_Codigo, "");
                 Medicos actual = Nodos.ListaMedicos;
                 while (actual != null)
                 {
@@ -61,16 +91,14 @@ namespace GMC
                     }
                     actual = actual.sig;
                 }
-
-                errorProvider1.SetError(añadir_Codigo, "");
-                añadir_BtnAgregar.Enabled = true;
-
+            } else if (añadir_Codigo.TextLength < 6) {
+                errorProvider1.SetError(añadir_Codigo, "El codigo debe ser de 6 digitos");
             }
-            
-        }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
+            if (añadir_Nombre.TextLength > 0 && añadir_Apellido.TextLength > 0 && añadir_Especialidad.TextLength > 0 && añadir_Codigo.TextLength == 6)
+            {
+                añadir_BtnAgregar.Enabled = true;
+            }
 
         }
 
@@ -172,32 +200,31 @@ namespace GMC
 
         private void elim_btnEliminar_Click(object sender, EventArgs e)
         {
-            if (MetodosMedicos.eliminarMedico(elim_Codigo.Text))
-            {
-                elim_btnEliminar.Enabled = false;
-                elim_Nombre.Text = string.Empty;
-                elim_Apellido.Text = string.Empty;
-                elim_Especialidad.Text = string.Empty;
-                elim_Costo.Value = 0;
-                MessageBox.Show("Medico eliminado correctamente");
-                listarMedicos();
-            }
-        }
-
-        private void tabPage4_Click(object sender, EventArgs e)
-        {
-
+            MetodosMedicos.eliminarMedico(elim_Codigo.Text);
+            elim_btnEliminar.Enabled = false;
+            elim_Nombre.Text = string.Empty;
+            elim_Apellido.Text = string.Empty;
+            elim_Especialidad.Text = string.Empty;
+            elim_Costo.Value = 0;
+            MessageBox.Show("Medico eliminado correctamente");
+            listarMedicos();
+            
         }
 
         private void añadir_BtnAgregar_Click(object sender, EventArgs e)
         {
             MetodosMedicos.agregarMedico(añadir_Codigo.Text, añadir_Nombre.Text, añadir_Apellido.Text, añadir_Especialidad.Text, int.Parse(añadir_Costo.Value.ToString()));
+            string msg = "Medico añadido.";
+            if (añadir_Costo.Value == 0)
+            {
+                msg += "\nGracias por ser tan generoso. TKM\nATT: Omar";
+            }
             añadir_Codigo.Text = string.Empty;
             añadir_Nombre.Text = string.Empty;
             añadir_Apellido.Text = string.Empty;
             añadir_Especialidad.Text = string.Empty;
             añadir_Costo.Value = 0;
-            MessageBox.Show("Medico añadido");
+            MessageBox.Show(msg);
             listarMedicos();
         }
 
@@ -233,6 +260,7 @@ namespace GMC
             mod_Especialidad.Text = string.Empty;
             mod_Costo.Value = 0;
             MessageBox.Show("Modificado");
+            listarMedicos();
         }
     }
 }

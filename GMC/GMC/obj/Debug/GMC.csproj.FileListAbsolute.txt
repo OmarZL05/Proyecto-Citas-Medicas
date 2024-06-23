@@ -5,7 +5,7 @@ C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.csproj.GenerateResource.Cache
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.exe
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.pdb
-C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.csprojResolveAssemblyReference.cache
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.MenuGeneral.resources
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.MenuMedicos.resources
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.MenuMedicosV2.resources
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Debug\GMC.MenuCitas.resources

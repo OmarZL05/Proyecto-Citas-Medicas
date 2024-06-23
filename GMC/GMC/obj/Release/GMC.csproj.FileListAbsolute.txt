@@ -1,7 +1,6 @@
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\bin\Release\GMC.exe.config
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\bin\Release\GMC.exe
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\bin\Release\GMC.pdb
-C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Release\GMC.csprojResolveAssemblyReference.cache
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Release\GMC.MenuMedicosV2.resources
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Release\GMC.MenuGeneral.resources
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Release\GMC.MenuMedicos.resources
@@ -9,3 +8,4 @@ C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Release\GMC.csproj.GenerateResource.Cache
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Release\GMC.exe
 C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Release\GMC.pdb
+C:\Users\OmarZ\Documents\Visual Studio 2012\Projects\Proyecto-Citas-Medicas\GMC\GMC\obj\Release\GMC.MenuCitas.resources
