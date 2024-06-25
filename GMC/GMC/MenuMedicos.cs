@@ -25,7 +25,8 @@ namespace GMC
 
         private void MenuMedicos_Load(object sender, EventArgs e)
         {
-            verificar();
+            añadir_TextChanged(null, null);
+            mod_TextChanged(null, null);
             elim_btnBuscar.Enabled = false;
             elim_btnEliminar.Enabled = false;
             mod_btnBuscar.Enabled = false;
@@ -45,81 +46,55 @@ namespace GMC
             actual = null;
         }
 
-        private void verificar()
+        private void verificarCampos(TextBox Codigo, TextBox Nombre, TextBox Apellido, TextBox Especialidad, NumericUpDown Costo, Button Boton)
         {
-            añadir_BtnAgregar.Enabled = false;
+            Boton.Enabled = false;
 
-            if (añadir_Costo.Value == 0)
+            if (Costo.Value == 0)
             {
-                errorProvider1.SetError(añadir_Costo, "¿Piensas regalar tus servicios?");
+                errorProvider1.SetError(Costo, "¿Piensas regalar tus servicios?");
             } else {
-                errorProvider1.SetError(añadir_Costo, "");
+                errorProvider1.SetError(Costo, "");
             }
 
-            if (añadir_Nombre.TextLength == 0)
+            if (Codigo.TextLength > 2)
             {
-                errorProvider1.SetError(añadir_Nombre, "Faltan terminos");
-            } else { 
-                errorProvider1.SetError(añadir_Nombre, ""); 
-            }
-
-            if (añadir_Apellido.TextLength == 0) 
-            {
-                errorProvider1.SetError(añadir_Apellido, "Faltan terminos");
-            } else { 
-                errorProvider1.SetError(añadir_Apellido, ""); 
-            }
-
-            if (añadir_Especialidad.TextLength == 0)
-            {
-                errorProvider1.SetError(añadir_Especialidad, "Faltan terminos");
-            } else { 
-                errorProvider1.SetError(añadir_Especialidad, "");
-            }
-
-            if (añadir_Codigo.TextLength == 6)
-            {
-                errorProvider1.SetError(añadir_Codigo, "");
+                errorProvider1.SetError(Codigo, "");
                 Medicos actual = Nodos.ListaMedicos;
                 while (actual != null)
                 {
-                    if (actual.codigo == añadir_Codigo.Text)
+                    if (actual.codigo == Codigo.Text && Codigo == añadir_Codigo)
                     {
-                        errorProvider1.SetError(añadir_Codigo, "Este codigo ya esta en uso");
-                        añadir_BtnAgregar.Enabled = false;
+                        errorProvider1.SetError(Codigo, "Este codigo ya esta en uso");
+                        Boton.Enabled = false;
                         return;
                     }
+                    else if (actual.codigo == Codigo.Text && Codigo == mod_Codigo)
+                    {
+                        Boton.Enabled = true;
+                        return;
+                    }
+
                     actual = actual.sig;
                 }
-            } else if (añadir_Codigo.TextLength < 6) {
-                errorProvider1.SetError(añadir_Codigo, "El codigo debe ser de 6 digitos");
+            } else if (Codigo.TextLength < 2) {
+                errorProvider1.SetError(Codigo, "El codigo debe ser de 6 digitos");
             }
 
-            if (añadir_Nombre.TextLength > 0 && añadir_Apellido.TextLength > 0 && añadir_Especialidad.TextLength > 0 && añadir_Codigo.TextLength == 6)
+            if (Nombre.TextLength > 0 && Apellido.TextLength > 0 && Especialidad.TextLength > 0 && Codigo.TextLength == 6)
             {
-                añadir_BtnAgregar.Enabled = true;
+                Boton.Enabled = true;
             }
 
         }
 
-        private void especialidad_TextChanged(object sender, EventArgs e)
+        private void añadir_TextChanged(object sender, EventArgs e)
         {
-            verificar();
+            verificarCampos(añadir_Codigo, añadir_Nombre, añadir_Apellido, añadir_Especialidad, añadir_Costo, añadir_BtnAgregar);
         }
-
-        private void nombre_TextChanged(object sender, EventArgs e)
+        private void mod_TextChanged(object sender, EventArgs e)
         {
-            verificar();
-        }
-
-        private void apellido_TextChanged(object sender, EventArgs e)
-        {
-            verificar();
-        }
-
-        private void codigo_TextChanged(object sender, EventArgs e)
-        {
-            verificar();
+            verificarCampos(mod_Codigo, mod_Nombre, mod_Apellido, mod_Especialidad, mod_Costo, mod_btnBuscar);
         }
 
         private void listar_Especialidad_TextChanged(object sender, EventArgs e)
@@ -141,8 +116,6 @@ namespace GMC
                     actual = actual.sig;
                 }
             }
-
-            actual = null;
         }
 
         private void elim_Codigo_TextChanged(object sender, EventArgs e)
@@ -154,17 +127,6 @@ namespace GMC
             }
         }
 
-        private void mod_Codigo_TextChanged(object sender, EventArgs e)
-        {
-            mod_btnBuscar.Enabled = false;
-            if (mod_Codigo.TextLength == 6)
-            {
-                mod_btnBuscar.Enabled = true;
-            }
-        }
-
-
-
         private void elim_btnBuscar_Click(object sender, EventArgs e)
         {
             elim_btnEliminar.Enabled = false;
@@ -174,7 +136,6 @@ namespace GMC
             elim_Costo.Value = 0;
 
             Medicos actual = Nodos.ListaMedicos;
-            bool encontrado = false;
             while (actual != null)
             {
                 if (actual.codigo == elim_Codigo.Text)
@@ -183,19 +144,15 @@ namespace GMC
                     elim_Apellido.Text = actual.apellido;
                     elim_Especialidad.Text = actual.especialidad;
                     elim_Costo.Value = actual.costo;
-                    encontrado = true;
+                    MessageBox.Show("Encontrado");
+                    elim_btnEliminar.Enabled = true;
+                    return;
                 }
                 actual = actual.sig;
             }
-            if (encontrado)
-            {
-                MessageBox.Show("Encontrado");
-                elim_btnEliminar.Enabled = true;
-            }
-            else
-            {
-                MessageBox.Show("No se ha encontrado");
-            }
+            
+            MessageBox.Show("No se ha encontrado");
+            
         }
 
         private void elim_btnEliminar_Click(object sender, EventArgs e)
@@ -213,7 +170,13 @@ namespace GMC
 
         private void añadir_BtnAgregar_Click(object sender, EventArgs e)
         {
-            MetodosMedicos.agregarMedico(añadir_Codigo.Text, añadir_Nombre.Text, añadir_Apellido.Text, añadir_Especialidad.Text, int.Parse(añadir_Costo.Value.ToString()));
+            /*
+             * ¿Por qué utilizo (int) añadir_Costo.Value y no simplemente, añadir_Costo.Value?
+             * Sensillo, porque me da la gana.
+             * Hago eso debido a que el NumericUpDown (El cuadro de numeros) devuelve un decimal y para no complicarme, solo hago un cast
+             * NT: Para facilitarme la vida, los costos estan en enteros, aunque es cierto que lo ideal seria trabajarlos en reales.
+            */
+            MetodosMedicos.agregarMedico(añadir_Codigo.Text, añadir_Nombre.Text, añadir_Apellido.Text, añadir_Especialidad.Text, (int) añadir_Costo.Value);
             string msg = "Medico añadido.";
             if (añadir_Costo.Value == 0)
             {
@@ -248,7 +211,6 @@ namespace GMC
                 actual = actual.sig;
             }
             MessageBox.Show("No encontrado");
-            actual = null;
         }
 
         private void mod_btnModificar_Click(object sender, EventArgs e)
@@ -262,5 +224,57 @@ namespace GMC
             MessageBox.Show("Modificado");
             listarMedicos();
         }
+
+        private void Ganancias_BtnBuscar_Click(object sender, EventArgs e)
+        {
+            Medicos actualMedicos = Nodos.ListaMedicos;
+            Citas actualCitas = Nodos.ListaCitas;
+            int citas = 0;
+            dataGridView2.Rows.Clear();
+
+            while (actualCitas != null)
+            {
+                if (actualCitas.medico == Ganancias_Codigo.Text && Ganancias_UsarRango.Checked)
+                {
+                    DateTime fechaCita = DateTime.Parse(actualCitas.fecha);
+                    DateTime fechaMinima = Ganancias_Desde.Value;
+                    DateTime fechaMaxima = Ganancias_Hasta.Value;
+
+                    // FechaMinima / FechaCita / FechaMaxima
+                    //  24-06-24   / 12-07-24  / 13-07-24
+                    //  Anterior(-1), Igual (0), Posterior(1)
+                    int Comparacion1 = DateTime.Compare(fechaCita, fechaMinima);
+                    int Comparacion2 = DateTime.Compare(fechaCita, fechaMaxima);
+
+                    Console.WriteLine("Comp1: " + Comparacion1 + " Comp2: " + Comparacion2);
+
+                    if (Comparacion1 < 0 && Comparacion2 > 0)
+                    {
+                        Console.WriteLine("Se te fue el tren araña");
+                    }
+                    else if (Comparacion1 >= 0 && Comparacion2 <= 0)
+                    {
+                        dataGridView2.Rows.Add(actualCitas.fecha);
+                        citas++;
+                    }
+                } else if (actualCitas.medico == Ganancias_Codigo.Text) {
+                    dataGridView2.Rows.Add(actualCitas.fecha);
+                    citas++;
+                }
+                actualCitas = actualCitas.sig;
+            }
+
+            while (actualMedicos != null)
+            {
+                if (actualMedicos.codigo == Ganancias_Codigo.Text)
+                {
+                    label24.Text = "Ganancias de " + actualMedicos.nombre;
+                    Ganancias_Ganancias.Value = (citas*actualMedicos.costo);
+                }
+                actualMedicos = actualMedicos.sig;
+            }
+
+        }
+
     }
 }

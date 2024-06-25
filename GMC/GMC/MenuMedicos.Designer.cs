@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuMedicos));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -81,7 +81,19 @@
             this.especialidades = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.costos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.Ganancias_Ganancias = new System.Windows.Forms.NumericUpDown();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.Ganancias_Hasta = new System.Windows.Forms.DateTimePicker();
+            this.Ganancias_BtnBuscar = new System.Windows.Forms.Button();
+            this.Ganancias_UsarRango = new System.Windows.Forms.CheckBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.Ganancias_Codigo = new System.Windows.Forms.TextBox();
+            this.Ganancias_Desde = new System.Windows.Forms.DateTimePicker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Ganancias_Fechas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.añadir_Costo)).BeginInit();
@@ -91,7 +103,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.elim_Costo)).BeginInit();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Ganancias_Ganancias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -154,7 +169,7 @@
             this.añadir_Codigo.Name = "añadir_Codigo";
             this.añadir_Codigo.Size = new System.Drawing.Size(100, 20);
             this.añadir_Codigo.TabIndex = 8;
-            this.añadir_Codigo.TextChanged += new System.EventHandler(this.codigo_TextChanged);
+            this.añadir_Codigo.TextChanged += new System.EventHandler(this.añadir_TextChanged);
             // 
             // label4
             // 
@@ -180,7 +195,7 @@
             this.añadir_Especialidad.Name = "añadir_Especialidad";
             this.añadir_Especialidad.Size = new System.Drawing.Size(100, 20);
             this.añadir_Especialidad.TabIndex = 5;
-            this.añadir_Especialidad.TextChanged += new System.EventHandler(this.especialidad_TextChanged);
+            this.añadir_Especialidad.TextChanged += new System.EventHandler(this.añadir_TextChanged);
             // 
             // label2
             // 
@@ -197,7 +212,7 @@
             this.añadir_Apellido.Name = "añadir_Apellido";
             this.añadir_Apellido.Size = new System.Drawing.Size(100, 20);
             this.añadir_Apellido.TabIndex = 3;
-            this.añadir_Apellido.TextChanged += new System.EventHandler(this.apellido_TextChanged);
+            this.añadir_Apellido.TextChanged += new System.EventHandler(this.añadir_TextChanged);
             // 
             // label1
             // 
@@ -221,7 +236,7 @@
             this.añadir_Nombre.Name = "añadir_Nombre";
             this.añadir_Nombre.Size = new System.Drawing.Size(100, 20);
             this.añadir_Nombre.TabIndex = 0;
-            this.añadir_Nombre.TextChanged += new System.EventHandler(this.nombre_TextChanged);
+            this.añadir_Nombre.TextChanged += new System.EventHandler(this.añadir_TextChanged);
             // 
             // tabPage2
             // 
@@ -280,7 +295,7 @@
             this.mod_Codigo.Name = "mod_Codigo";
             this.mod_Codigo.Size = new System.Drawing.Size(100, 20);
             this.mod_Codigo.TabIndex = 31;
-            this.mod_Codigo.TextChanged += new System.EventHandler(this.mod_Codigo_TextChanged);
+            this.mod_Codigo.TextChanged += new System.EventHandler(this.mod_TextChanged);
             // 
             // label13
             // 
@@ -306,6 +321,7 @@
             this.mod_Especialidad.Name = "mod_Especialidad";
             this.mod_Especialidad.Size = new System.Drawing.Size(100, 20);
             this.mod_Especialidad.TabIndex = 28;
+            this.mod_Especialidad.TextChanged += new System.EventHandler(this.mod_TextChanged);
             // 
             // label15
             // 
@@ -322,6 +338,7 @@
             this.mod_Apellido.Name = "mod_Apellido";
             this.mod_Apellido.Size = new System.Drawing.Size(100, 20);
             this.mod_Apellido.TabIndex = 26;
+            this.mod_Apellido.TextChanged += new System.EventHandler(this.mod_TextChanged);
             // 
             // label16
             // 
@@ -345,6 +362,7 @@
             this.mod_Nombre.Name = "mod_Nombre";
             this.mod_Nombre.Size = new System.Drawing.Size(100, 20);
             this.mod_Nombre.TabIndex = 23;
+            this.mod_Nombre.TextChanged += new System.EventHandler(this.mod_TextChanged);
             // 
             // tabPage3
             // 
@@ -479,7 +497,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(276, 236);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Listar";
+            this.tabPage4.Text = "Listas";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // label6
@@ -511,15 +529,15 @@
             this.apellidos,
             this.especialidades,
             this.costos});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.Format = "N2";
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(0, 48);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -552,15 +570,26 @@
             // 
             // costos
             // 
-            dataGridViewCellStyle5.Format = "N0";
-            dataGridViewCellStyle5.NullValue = null;
-            this.costos.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.costos.DefaultCellStyle = dataGridViewCellStyle1;
             this.costos.HeaderText = "Costos";
             this.costos.Name = "costos";
             this.costos.ReadOnly = true;
             // 
             // tabPage5
             // 
+            this.tabPage5.Controls.Add(this.dataGridView2);
+            this.tabPage5.Controls.Add(this.Ganancias_Ganancias);
+            this.tabPage5.Controls.Add(this.label24);
+            this.tabPage5.Controls.Add(this.label23);
+            this.tabPage5.Controls.Add(this.label22);
+            this.tabPage5.Controls.Add(this.Ganancias_Hasta);
+            this.tabPage5.Controls.Add(this.Ganancias_BtnBuscar);
+            this.tabPage5.Controls.Add(this.Ganancias_UsarRango);
+            this.tabPage5.Controls.Add(this.label17);
+            this.tabPage5.Controls.Add(this.Ganancias_Codigo);
+            this.tabPage5.Controls.Add(this.Ganancias_Desde);
             this.tabPage5.Location = new System.Drawing.Point(4, 22);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
@@ -569,10 +598,126 @@
             this.tabPage5.Text = "Ganancias";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
+            // Ganancias_Ganancias
+            // 
+            this.Ganancias_Ganancias.Location = new System.Drawing.Point(19, 158);
+            this.Ganancias_Ganancias.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.Ganancias_Ganancias.Name = "Ganancias_Ganancias";
+            this.Ganancias_Ganancias.Size = new System.Drawing.Size(95, 20);
+            this.Ganancias_Ganancias.TabIndex = 25;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(16, 142);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(58, 13);
+            this.label24.TabIndex = 24;
+            this.label24.Text = "Ganancias";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(161, 57);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(35, 13);
+            this.label23.TabIndex = 21;
+            this.label23.Text = "Hasta";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(13, 57);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(38, 13);
+            this.label22.TabIndex = 20;
+            this.label22.Text = "Desde";
+            // 
+            // Ganancias_Hasta
+            // 
+            this.Ganancias_Hasta.CustomFormat = "";
+            this.Ganancias_Hasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Ganancias_Hasta.Location = new System.Drawing.Point(164, 73);
+            this.Ganancias_Hasta.Name = "Ganancias_Hasta";
+            this.Ganancias_Hasta.Size = new System.Drawing.Size(97, 20);
+            this.Ganancias_Hasta.TabIndex = 16;
+            this.Ganancias_Hasta.Value = new System.DateTime(2024, 6, 24, 0, 0, 0, 0);
+            // 
+            // Ganancias_BtnBuscar
+            // 
+            this.Ganancias_BtnBuscar.Location = new System.Drawing.Point(193, 16);
+            this.Ganancias_BtnBuscar.Name = "Ganancias_BtnBuscar";
+            this.Ganancias_BtnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.Ganancias_BtnBuscar.TabIndex = 15;
+            this.Ganancias_BtnBuscar.Text = "Buscar";
+            this.Ganancias_BtnBuscar.UseVisualStyleBackColor = true;
+            this.Ganancias_BtnBuscar.Click += new System.EventHandler(this.Ganancias_BtnBuscar_Click);
+            // 
+            // Ganancias_UsarRango
+            // 
+            this.Ganancias_UsarRango.AutoSize = true;
+            this.Ganancias_UsarRango.Location = new System.Drawing.Point(19, 99);
+            this.Ganancias_UsarRango.Name = "Ganancias_UsarRango";
+            this.Ganancias_UsarRango.Size = new System.Drawing.Size(135, 17);
+            this.Ganancias_UsarRango.TabIndex = 14;
+            this.Ganancias_UsarRango.Text = "Usar rango personalido";
+            this.Ganancias_UsarRango.UseVisualStyleBackColor = true;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(8, 19);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(40, 13);
+            this.label17.TabIndex = 11;
+            this.label17.Text = "Codigo";
+            // 
+            // Ganancias_Codigo
+            // 
+            this.errorProvider1.SetIconPadding(this.Ganancias_Codigo, 5);
+            this.Ganancias_Codigo.Location = new System.Drawing.Point(54, 16);
+            this.Ganancias_Codigo.Name = "Ganancias_Codigo";
+            this.Ganancias_Codigo.Size = new System.Drawing.Size(100, 20);
+            this.Ganancias_Codigo.TabIndex = 10;
+            // 
+            // Ganancias_Desde
+            // 
+            this.Ganancias_Desde.CustomFormat = "";
+            this.Ganancias_Desde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.Ganancias_Desde.Location = new System.Drawing.Point(16, 73);
+            this.Ganancias_Desde.Name = "Ganancias_Desde";
+            this.Ganancias_Desde.Size = new System.Drawing.Size(95, 20);
+            this.Ganancias_Desde.TabIndex = 0;
+            this.Ganancias_Desde.Value = new System.DateTime(2024, 6, 24, 0, 0, 0, 0);
+            // 
             // errorProvider1
             // 
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Ganancias_Fechas});
+            this.dataGridView2.Location = new System.Drawing.Point(133, 140);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowHeadersVisible = false;
+            this.dataGridView2.Size = new System.Drawing.Size(143, 96);
+            this.dataGridView2.TabIndex = 26;
+            // 
+            // Ganancias_Fechas
+            // 
+            this.Ganancias_Fechas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Ganancias_Fechas.HeaderText = "Fecha";
+            this.Ganancias_Fechas.Name = "Ganancias_Fechas";
+            this.Ganancias_Fechas.ReadOnly = true;
             // 
             // MenuMedicos
             // 
@@ -597,7 +742,11 @@
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Ganancias_Ganancias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -654,5 +803,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn apellidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn especialidades;
         private System.Windows.Forms.DataGridViewTextBoxColumn costos;
+        private System.Windows.Forms.DateTimePicker Ganancias_Desde;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox Ganancias_Codigo;
+        private System.Windows.Forms.DateTimePicker Ganancias_Hasta;
+        private System.Windows.Forms.Button Ganancias_BtnBuscar;
+        private System.Windows.Forms.CheckBox Ganancias_UsarRango;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.NumericUpDown Ganancias_Ganancias;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ganancias_Fechas;
     }
 }
