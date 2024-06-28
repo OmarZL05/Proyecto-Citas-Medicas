@@ -15,6 +15,10 @@ namespace GMC
         public MenuMedicos()
         {
             InitializeComponent();
+            elim_Nombre.ReadOnly = true;
+            elim_Apellido.ReadOnly = true;
+            elim_Especialidad.ReadOnly = true;
+            elim_Costo.ReadOnly = true;
             añadir_Codigo.MaxLength = 6;
             mod_Codigo.MaxLength = 6;
             elim_Codigo.MaxLength = 6;
@@ -50,36 +54,63 @@ namespace GMC
         {
             Boton.Enabled = false;
 
+            errorProvider1.SetError(Costo, "");
             if (Costo.Value == 0)
             {
                 errorProvider1.SetError(Costo, "¿Piensas regalar tus servicios?");
-            } else {
-                errorProvider1.SetError(Costo, "");
             }
 
-            if (Codigo.TextLength > 2)
+            errorProvider1.SetError(Codigo, "");
+
+            if (Codigo.TextLength <= 2)
             {
-                errorProvider1.SetError(Codigo, "");
-                Medicos actual = Nodos.ListaMedicos;
-                while (actual != null)
+                errorProvider1.SetError(Codigo, "El codigo debe ser de 6 digitos");
+                return;
+            }
+
+            Medicos actual = Nodos.ListaMedicos;
+            while (actual != null)
+            {
+                if (actual.codigo.ToLower() == Codigo.Text.ToLower()) 
                 {
-                    if (actual.codigo == Codigo.Text && Codigo == añadir_Codigo)
+                    if (Codigo == añadir_Codigo)
                     {
                         errorProvider1.SetError(Codigo, "Este codigo ya esta en uso");
                         Boton.Enabled = false;
                         return;
                     }
-                    else if (actual.codigo == Codigo.Text && Codigo == mod_Codigo)
-                    {
-                        Boton.Enabled = true;
-                        return;
-                    }
-
-                    actual = actual.sig;
+                    Boton.Enabled = true;
+                    return;
                 }
-            } else if (Codigo.TextLength < 2) {
-                errorProvider1.SetError(Codigo, "El codigo debe ser de 6 digitos");
+
+                actual = actual.sig;
             }
+
+
+            int contLetras = 0;
+            int contNumeros = 0;
+            for (int i = 0; i < Codigo.TextLength; i++)
+            {
+
+                char caracter = Codigo.Text.ElementAt(i);
+                if (Char.IsLetter(caracter) && contLetras <= 3)
+                {
+                    contLetras++;
+                }
+                if (Char.IsNumber(caracter) && contLetras == 3 && contNumeros <= 3)
+                {
+                    contNumeros++;
+                }
+                
+            }
+
+            if (Codigo.TextLength == 6 && (contLetras != 3 || contNumeros != 3))
+            {
+                errorProvider1.SetError(Codigo, "NOTA: El codigo debe estar formado por 3 caracteres alfabeticos y 3 numeros.");
+                return;
+            }
+            Console.WriteLine(contLetras + " : " + contNumeros);
+
 
             if (Nombre.TextLength > 0 && Apellido.TextLength > 0 && Especialidad.TextLength > 0 && Codigo.TextLength == 6)
             {
@@ -121,6 +152,7 @@ namespace GMC
         private void elim_Codigo_TextChanged(object sender, EventArgs e)
         {
             elim_btnBuscar.Enabled = false;
+            elim_btnEliminar.Enabled = false;
             if (elim_Codigo.TextLength == 6)
             {
                 elim_btnBuscar.Enabled = true;
@@ -221,6 +253,7 @@ namespace GMC
             mod_Apellido.Text = string.Empty;
             mod_Especialidad.Text = string.Empty;
             mod_Costo.Value = 0;
+            mod_btnModificar.Enabled = false;
             MessageBox.Show("Modificado");
             listarMedicos();
         }
@@ -231,48 +264,53 @@ namespace GMC
             Citas actualCitas = Nodos.ListaCitas;
             int citas = 0;
             dataGridView2.Rows.Clear();
+            label24.Text = "Ganancias";
+            Ganancias_CostoMedico.Text = "Precio de la consulta: ";
+            Ganancias_Ganancias.Value = 0;
+
+            bool encontrado = false;
+            while (actualMedicos != null)
+            {
+                if (actualMedicos.codigo.ToLower() == Ganancias_Codigo.Text.ToLower())
+                {
+                    encontrado = true;
+                    break;
+                }
+                actualMedicos = actualMedicos.sig;
+            }
+
+            if (!encontrado) {
+                MessageBox.Show("Codigo invalido");
+                return;
+            }
 
             while (actualCitas != null)
             {
-                if (actualCitas.medico == Ganancias_Codigo.Text && Ganancias_UsarRango.Checked)
+
+                if (actualCitas.medico != Ganancias_Codigo.Text && Ganancias_UsarRango.Checked)
                 {
                     DateTime fechaCita = DateTime.Parse(actualCitas.fecha);
                     DateTime fechaMinima = Ganancias_Desde.Value;
                     DateTime fechaMaxima = Ganancias_Hasta.Value;
 
-                    // FechaMinima / FechaCita / FechaMaxima
-                    //  24-06-24   / 12-07-24  / 13-07-24
-                    //  Anterior(-1), Igual (0), Posterior(1)
                     int Comparacion1 = DateTime.Compare(fechaCita, fechaMinima);
                     int Comparacion2 = DateTime.Compare(fechaCita, fechaMaxima);
 
-                    Console.WriteLine("Comp1: " + Comparacion1 + " Comp2: " + Comparacion2);
-
-                    if (Comparacion1 < 0 && Comparacion2 > 0)
+                    if (Comparacion1 >= 0 && Comparacion2 <= 0)
                     {
-                        Console.WriteLine("Se te fue el tren araña");
-                    }
-                    else if (Comparacion1 >= 0 && Comparacion2 <= 0)
-                    {
-                        dataGridView2.Rows.Add(actualCitas.fecha);
+                        dataGridView2.Rows.Add(actualCitas.fecha, actualCitas.hora);
                         citas++;
                     }
                 } else if (actualCitas.medico == Ganancias_Codigo.Text) {
-                    dataGridView2.Rows.Add(actualCitas.fecha);
+                    dataGridView2.Rows.Add(actualCitas.fecha, actualCitas.hora);
                     citas++;
                 }
                 actualCitas = actualCitas.sig;
             }
 
-            while (actualMedicos != null)
-            {
-                if (actualMedicos.codigo == Ganancias_Codigo.Text)
-                {
-                    label24.Text = "Ganancias de " + actualMedicos.nombre;
-                    Ganancias_Ganancias.Value = (citas*actualMedicos.costo);
-                }
-                actualMedicos = actualMedicos.sig;
-            }
+            label24.Text = "Ganancias de " + actualMedicos.nombre;
+            Ganancias_CostoMedico.Text = "Precio de la consulta: " + actualMedicos.costo;
+            Ganancias_Ganancias.Value = (citas * actualMedicos.costo);
 
         }
 
