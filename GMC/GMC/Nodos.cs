@@ -31,7 +31,7 @@ namespace GMC
             Citas cita6 = new Citas(cantidadCitas++, "En Espera", "14/07/2024", "11:30", new Paciente(7777777, "Angela", "Fernandez"), "mmn302");
             Citas cita7 = new Citas(cantidadCitas++, "En Espera", "14/07/2024", "10:00", new Paciente(6666666, "Elena", "Martinez"), "csi504");
             Citas cita8 = new Citas(cantidadCitas++, "En Espera", "16/07/2024", "10:00", new Paciente(5555555, "Irene", "Marcano"), "lmi603");
-            Citas cita9 = new Citas(cantidadCitas++, "En Espera", "14/07/2024", "11:30", new Paciente(4444444, "Juan", "Zapata"), "mmn302");
+            Citas cita9 = new Citas(cantidadCitas++, "En Espera", "14/07/2024", "12:15", new Paciente(4444444, "Juan", "Zapata"), "mmn302");
 
             ListaCitas.sig = cita2;
             cita2.sig = cita3;

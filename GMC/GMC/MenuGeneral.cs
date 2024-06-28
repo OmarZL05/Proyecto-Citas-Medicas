@@ -32,13 +32,5 @@ namespace GMC
             menuMedicos.ShowDialog();
             this.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            MenuMedicosV2 menuMedicos = new MenuMedicosV2();
-            menuMedicos.ShowDialog();
-            this.Show();
-        }
     }
 }

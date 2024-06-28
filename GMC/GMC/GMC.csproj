@@ -65,12 +65,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MenuMedicosV2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MenuMedicosV2.Designer.cs">
-      <DependentUpon>MenuMedicosV2.cs</DependentUpon>
-    </Compile>
     <Compile Include="MenuGeneral.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,9 +90,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MenuCitas.resx">
       <DependentUpon>MenuCitas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MenuMedicosV2.resx">
-      <DependentUpon>MenuMedicosV2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuGeneral.resx">
       <DependentUpon>MenuGeneral.cs</DependentUpon>

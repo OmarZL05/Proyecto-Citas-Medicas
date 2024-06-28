@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuMedicos));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -83,6 +83,8 @@
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.Ganancias_CostoMedico = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Ganancias_Fechas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ganancias_Horas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ganancias_Ganancias = new System.Windows.Forms.NumericUpDown();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
@@ -94,8 +96,6 @@
             this.Ganancias_Codigo = new System.Windows.Forms.TextBox();
             this.Ganancias_Desde = new System.Windows.Forms.DateTimePicker();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.Ganancias_Fechas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ganancias_Horas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.añadir_Costo)).BeginInit();
@@ -533,15 +533,15 @@
             this.apellidos,
             this.especialidades,
             this.costos});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Location = new System.Drawing.Point(0, 48);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -575,9 +575,9 @@
             // 
             // costos
             // 
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            this.costos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = null;
+            this.costos.DefaultCellStyle = dataGridViewCellStyle1;
             this.costos.HeaderText = "Costos";
             this.costos.Name = "costos";
             this.costos.ReadOnly = true;
@@ -626,6 +626,21 @@
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.Size = new System.Drawing.Size(143, 96);
             this.dataGridView2.TabIndex = 26;
+            // 
+            // Ganancias_Fechas
+            // 
+            this.Ganancias_Fechas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Ganancias_Fechas.HeaderText = "Fecha";
+            this.Ganancias_Fechas.Name = "Ganancias_Fechas";
+            this.Ganancias_Fechas.ReadOnly = true;
+            this.Ganancias_Fechas.Width = 62;
+            // 
+            // Ganancias_Horas
+            // 
+            this.Ganancias_Horas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Ganancias_Horas.HeaderText = "Hora";
+            this.Ganancias_Horas.Name = "Ganancias_Horas";
+            this.Ganancias_Horas.ReadOnly = true;
             // 
             // Ganancias_Ganancias
             // 
@@ -727,21 +742,6 @@
             // 
             this.errorProvider1.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
             this.errorProvider1.ContainerControl = this;
-            // 
-            // Ganancias_Fechas
-            // 
-            this.Ganancias_Fechas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Ganancias_Fechas.HeaderText = "Fecha";
-            this.Ganancias_Fechas.Name = "Ganancias_Fechas";
-            this.Ganancias_Fechas.ReadOnly = true;
-            this.Ganancias_Fechas.Width = 62;
-            // 
-            // Ganancias_Horas
-            // 
-            this.Ganancias_Horas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Ganancias_Horas.HeaderText = "Hora";
-            this.Ganancias_Horas.Name = "Ganancias_Horas";
-            this.Ganancias_Horas.ReadOnly = true;
             // 
             // MenuMedicos
             // 
