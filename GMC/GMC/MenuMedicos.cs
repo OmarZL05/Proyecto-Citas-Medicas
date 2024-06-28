@@ -45,9 +45,11 @@ namespace GMC
             while (actual != null)
             {
                 dataGridView1.Rows.Add(actual.codigo, actual.nombre, actual.apellido, actual.especialidad, actual.costo);
+                //comboBox1.Controls
                 actual = actual.sig;
             }
             actual = null;
+
         }
 
         private void verificarCampos(TextBox Codigo, TextBox Nombre, TextBox Apellido, TextBox Especialidad, NumericUpDown Costo, Button Boton)
